@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Teplo.BusinessLayer.Models.CanalM1994ViewModel">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAEAAAAAAEEAAAAEAEAAAAAAAAAAAAAAACgAAIAAAA=</HashCode>
+      <FileName>Models\CanalM1994ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Teplo.BusinessLayer.Models.CanalU1994ViewModel">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAACAAAAQAAAAAgAIAAAAAAAAQQAAAA=</HashCode>
+      <FileName>Models\CanalU1994ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Teplo.BusinessLayer.Models.RoomU1994ViewModel">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAIIACAAAAAAAAAAAAAEAAAAAAAAAAAAAAQBA=</HashCode>
+      <FileName>Models\RoomU1994ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Teplo.BusinessLayer.Models.SteamM1994ViewModel">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIABCABBAAAACAAAEAAAAIAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Models\SteamM1994ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Teplo.BusinessLayer.Models.SteamU1994ViewModel">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAIAACABBAAAAAAgQAAAAAAAAAIAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Models\SteamU1994ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Teplo.BusinessLayer.Service.CanalM1994Service" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Service\CanalM1994Service.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Teplo.BusinessLayer.Service.CanalU1994Service" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Service\CanalU1994Service.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Teplo.BusinessLayer.Service.RoomU1994Service" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Service\RoomU1994Service.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Teplo.BusinessLayer.Service.SteamM1994Service" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Service\SteamM1994Service.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Teplo.BusinessLayer.Service.SteamU1994Service" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Service\SteamU1994Service.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Teplo.BusinessLayer.Interfaces.ITeploService&lt;T&gt;">
+    <Position X="12.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ITeploService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

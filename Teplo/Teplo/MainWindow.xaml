@@ -1,0 +1,225 @@
+﻿<Window x:Class="Teplo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Teplo"          
+        mc:Ignorable="d"
+        DataContext="{Binding BasLogicClass, RelativeSource={RelativeSource Self}}"
+        Title="Расчет тепловых потерь для паропроводов и конденсатопроводов" Height="1000" Width="1000"        
+        WindowStartupLocation="CenterOwner" d:DesignHeight="2500" d:DesignWidth="2000">        
+    <Window.Resources>
+        <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>        
+    </Window.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <RadioButton Grid.Column="0" Grid.Row="1" x:Name="ChsBtnU94" GroupName="Steam" Margin="0,20" Content="Подземная бесканальная прокладка до 1994 г." HorizontalAlignment="Center" VerticalAlignment="Top" Width="Auto" Height="15"/>
+            <Grid x:Name="Grid_U" Grid.Column="0" Grid.Row="2" Visibility="{Binding ElementName=ChsBtnU94, Path=IsChecked, Converter={StaticResource BoolToVisibilityConverter}}">
+                <Label Margin="20,60" Width="Auto" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Температура пара"/>
+                <TextBox x:Name="TSU_Text" Text="{Binding Path=T_S, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="PreviewTextInput" Margin="150,60,0,0" Width="50" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Label Margin="20,110" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Температура о. с.&#10;(грунта или воздуха)"/>
+                <TextBox x:Name="TEU_Text" Text="{Binding Path=T_E, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="PreviewTextInput" Margin="150,120,0,0" Width="50" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Label Margin="20,180" Width="Auto" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Длина участка"/>
+                <TextBox x:Name="LU_Text" Text="{Binding Path=L, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="PreviewTextInput" Margin="150,180,0,0" Width="50" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Label Margin="20,230,0,0" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Наружный диаметр&#10;паропровода"/>
+                <ComboBox x:Name="D_U_List" SelectedIndex="0" SelectedItem="{Binding Path=D_U}" DisplayMemberPath="Dp_U" ItemsSource="{Binding}" SelectedValuePath="ID_U" Margin="150,240,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Margin="20,290,0,0" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Диаметр конденсато-&#10;провода"/>
+                <Label x:Name="D_U_Label" Content="{Binding ElementName=D_U_List, Path=SelectedItem.Dk_U}" Margin="150,300,0,0" Width="50" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <CheckBox x:Name="T_C_U" IsChecked="{Binding Path=Check}" Content="Прокладка только паропровода" Margin="20,340,0,0" Height="15" Width="Auto" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Label Content="Примечание" Margin="20,370,0,0" Height="30" Width="Auto" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <TextBox x:Name="NoteU_Text" Margin="150,370,0,0" Width="250" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Button x:Name="CalcBtnU" Height="20" Width="120" Margin="20,400,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Рассчитать участок" Click="CalcBtnU_Click" Command="{Binding CalcCommandU}"/>
+            </Grid>
+            <RadioButton Grid.Column="1" Grid.Row="1" x:Name="ChsBtnM94" GroupName="Steam" Margin="0,20" Content="Подземная бесканальная прокладка после 1994 г." HorizontalAlignment="Center" VerticalAlignment="Top" Width="Auto" Height="15"/>
+            <Grid x:Name="Grid_M" Grid.Column="1" Grid.Row="2" Visibility="{Binding ElementName=ChsBtnM94, Path=IsChecked, Converter={StaticResource BoolToVisibilityConverter}}">
+                <Label Margin="20,60" Width="Auto" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Температура пара"/>
+                <TextBox x:Name="TSM_Text" Text="{Binding Path=T_S, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="PreviewTextInput"  Margin="150,60,0,0" Width="50" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Label Margin="20,110" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Температура о. с.&#10;(грунта или воздуха)"/>
+                <TextBox x:Name="TEM_Text" Text="{Binding Path=T_E, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="PreviewTextInput" Margin="150,120,0,0" Width="50" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Label Margin="20,180" Width="Auto" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Длина участка"/>
+                <TextBox x:Name="L_Text" Text="{Binding Path=L, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="PreviewTextInput" Margin="150,180,0,0" Width="50" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Label Margin="20,230,0,0" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Наружный диаметр&#10;паропровода"/>
+                <ComboBox x:Name="D_M_List" SelectedIndex="0" SelectedItem="{Binding Path=D_M}" DisplayMemberPath="Dp_M" ItemsSource="{Binding}" SelectedValuePath="ID_M" Margin="150,240,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Margin="20,290,0,0" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Диаметр конденсато-&#10;провода"/>
+                <Label x:Name="D_M_Label" Content="{Binding ElementName=D_M_List, Path=SelectedItem.Dk_M}" Margin="150,300,0,0" Width="50" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <CheckBox x:Name="T_C_M" IsChecked="{Binding Path=Check}" Content="Прокладка только паропровода" Margin="20,340,0,0" Height="15" Width="Auto" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Label Content="Примечание" Margin="20,370,0,0" Height="30" Width="Auto" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <TextBox x:Name="NoteM_Text" Margin="150,370,0,0" Width="250" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Button x:Name="CalcBtn" Height="20" Width="120" Margin="20,400,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Рассчитать участок" Click="CalcBtnM_Click" Command="{Binding CalcCommandM}"/>
+            </Grid>
+            <DataGrid x:Name="Res_Grid" Grid.Row="3" Margin="0,20,0,0" Grid.ColumnSpan="2" AutoGenerateColumns="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" IsReadOnly="True" LoadingRow="DGrid_LoadingRow" ItemsSource="{Binding BasLogicClass.resClass}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="q пара" Width="0.75*" Binding="{Binding Ql_S, StringFormat={}{0:0.##}}">
+                        <DataGridTextColumn.CellStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="D паропровода" Width="*" Binding="{Binding D_S}">
+                        <DataGridTextColumn.CellStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Длина участка" Width="*" Binding="{Binding L}">
+                        <DataGridTextColumn.CellStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Q пара" Width="0.75*" Binding="{Binding Qres_S, StringFormat={}{0:0.##}}">
+                        <DataGridTextColumn.CellStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="q конденсата" Width="*" Binding="{Binding Q_C}">
+                        <DataGridTextColumn.CellStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="D кондесатопровода" Width="1.5*" Binding="{Binding D_C}">
+                        <DataGridTextColumn.CellStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Q конденсатопровода" Width="1.5*" Binding="{Binding Qres_C, StringFormat={}{0:0.##}}">
+                        <DataGridTextColumn.CellStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Часовые среднегодовые&#10;Q паропровода" Width="2*" Binding="{Binding Qh_y_S, StringFormat={}{0:0.##}}">
+                        <DataGridTextColumn.CellStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Часовые среднегодовые&#10;Q конденсатопровода" Width="2*" Binding="{Binding Qh_y_C, StringFormat={}{0:0.##}}">
+                        <DataGridTextColumn.CellStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Примечание" Width="*" IsReadOnly="False" Binding="{Binding Note}">
+                        <DataGridTextColumn.CellStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="DeleteBtn" Height="25" Width="160" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Удалить выбранную строку" Margin="20" Click="DeleteBtn_Click" Command="{Binding DeleteCommand}" 
+                CommandParameter="{Binding ElementName=Res_Grid, Path=SelectedItem}"/>
+            <Button x:Name="SaveBtn" Height="25" Width="160" Grid.Row="4" Grid.Column="1" Content="Сохранить в Excel" Margin="20" Command="{Binding ExcelImport}"/>
+            <RadioButton Grid.Column="0" Grid.Row="5" x:Name="CanalU" GroupName="Steam" Margin="0,20" Content="Подземная прокладка до 1994 г. в проходном канале или подполье" HorizontalAlignment="Center" VerticalAlignment="Top" Width="Auto" Height="15"/>            
+            <Grid x:Name="Grid_U_CU_RU" Grid.Column="0" Grid.Row="6" Visibility="{Binding ElementName=CanalU, Path=IsChecked, Converter={StaticResource BoolToVisibilityConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <RadioButton Margin="20,0" Grid.Row="0" x:Name="RBtn_RU" GroupName="ROOM" Content="Помещение или техническое подполье" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Grid Grid.Row="1" Visibility="{Binding ElementName=RBtn_RU, Path=IsChecked, Converter={StaticResource BoolToVisibilityConverter}}">
+                    <Label Margin="20,60" Width="Auto" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Температура пара"/>
+                    <TextBox x:Name="TSU_R_Text" Text="{Binding Path=T_S}" PreviewTextInput="PreviewTextInput" Margin="150,60,0,0" Width="50" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>                    
+                    <Label Margin="20,120" Width="Auto" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Длина участка"/>
+                    <TextBox x:Name="LU_R_Text" Text="{Binding Path=L}" PreviewTextInput="PreviewTextInput" Margin="150,120,0,0" Width="50" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Label Margin="20,180,0,0" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Наружный диаметр&#10;паропровода"/>
+                    <ComboBox x:Name="D_U_T_R_List" SelectedIndex="0" SelectedItem="{Binding Path=D_U}" DisplayMemberPath="D_RU" ItemsSource="{Binding}" SelectedValuePath="ID_U" Margin="150,180,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Margin="20,240,0,0" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Диаметр конденсато-&#10;провода"/>
+                    <ComboBox x:Name="D_U_W_R_List" SelectedIndex="0" SelectedItem="{Binding Path=D_U}" DisplayMemberPath="D_RU" ItemsSource="{Binding}" SelectedValuePath="ID_U" Margin="150,240,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="Температура&#10;конденсатопровода" Margin="20,295,0,0" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="T_C_R_U" Margin="150,300,0,0" PreviewTextInput="PreviewTextInput" Height="20" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Label Content="Примечание" Margin="20,350,0,0" Height="30" Width="Auto" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="NoteU_R_Text" Margin="150,350,0,0" Width="250" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Button x:Name="CalcBtnU_R" Height="20" Width="120" Margin="20,380,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Рассчитать участок" Click="CalcBtnU_R_Click"  Command="{Binding CalcCommandRU}"/>
+                </Grid>
+                <RadioButton Margin="20,0" Grid.Row="0" x:Name="RBtn_CU" GroupName="ROOM" Content="Тоннель/проходной канал" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                <Grid Grid.Row="1" Visibility="{Binding ElementName=RBtn_CU, Path=IsChecked, Converter={StaticResource BoolToVisibilityConverter}}">
+                    <Label Margin="20,60" Width="Auto" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Температура пара"/>
+                    <TextBox x:Name="TSU_C_Text" Text="{Binding Path=T_S}" PreviewTextInput="PreviewTextInput" Margin="150,60,0,0" Width="50" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Label Margin="20,120" Width="Auto" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Длина участка"/>
+                    <TextBox x:Name="LU_C_Text" Text="{Binding Path=L}" PreviewTextInput="PreviewTextInput" Margin="150,120,0,0" Width="50" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Label Margin="20,180,0,0" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Наружный диаметр&#10;паропровода"/>
+                    <ComboBox x:Name="D_U_T_C_List" SelectedIndex="0" SelectedItem="{Binding Path=D_U}" DisplayMemberPath="D_CU" ItemsSource="{Binding}" SelectedValuePath="ID_U" Margin="150,180,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Margin="20,240,0,0" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Диаметр конденсато-&#10;провода"/>
+                    <ComboBox x:Name="D_U_W_C_List" SelectedIndex="0" SelectedItem="{Binding Path=D_U}" DisplayMemberPath="D_CU" ItemsSource="{Binding}" SelectedValuePath="ID_U" Margin="150,240,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="Температура&#10;конденсатопровода" Margin="20,295,0,0" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="T_C_C_U" Margin="150,300,0,0" PreviewTextInput="PreviewTextInput" Height="20" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"/>                   
+                    <Label Content="Примечание" Margin="20,350,0,0" Height="30" Width="Auto" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="NoteU_C_Text" Margin="150,350,0,0" Width="250" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Button x:Name="CalcBtnU_C" Height="20" Width="120" Margin="20,380,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Рассчитать участок" Click="CalcBtnU_C_Click"  Command="{Binding CalcCommandCU}"/>
+                </Grid>
+            </Grid>
+            <RadioButton Grid.Column="1" Grid.Row="5" x:Name="CanalM" GroupName="Steam" Margin="0,20" Content="Подземная прокладка после 1994 г. в проходном канале или подполье" HorizontalAlignment="Center" VerticalAlignment="Top" Width="Auto" Height="15" />
+            <Grid x:Name="Grid_U_CM_RM" Grid.Column="1" Grid.Row="6" Visibility="{Binding ElementName=CanalM, Path=IsChecked, Converter={StaticResource BoolToVisibilityConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <RadioButton Margin="20,0" Grid.Row="0" x:Name="RBtn_RM" GroupName="ROOM" Content="Помещение или техническое подполье" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Grid Grid.Row="1" Visibility="{Binding ElementName=RBtn_RM, Path=IsChecked, Converter={StaticResource BoolToVisibilityConverter}}">
+                    <Label Margin="20,60" Width="Auto" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Температура пара"/>
+                    <TextBox x:Name="TSM_R_Text" Text="{Binding Path=T_S}" PreviewTextInput="PreviewTextInput" Margin="150,60,0,0" Width="50" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Label Margin="20,120" Width="Auto" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Длина участка"/>
+                    <TextBox x:Name="LM_R_Text" Text="{Binding Path=L}" PreviewTextInput="PreviewTextInput" Margin="150,120,0,0" Width="50" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Label Margin="20,180,0,0" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Наружный диаметр&#10;паропровода"/>
+                    <ComboBox x:Name="D_M_T_R_List" SelectedIndex="0" SelectedItem="{Binding Path=D_U}" DisplayMemberPath="D_CM" ItemsSource="{Binding}" SelectedValuePath="ID_U" Margin="150,180,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Margin="20,240,0,0" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Диаметр конденсато-&#10;провода"/>
+                    <ComboBox x:Name="D_M_W_R_List" SelectedIndex="0" SelectedItem="{Binding Path=D_U}" DisplayMemberPath="D_CM" ItemsSource="{Binding}" SelectedValuePath="ID_U" Margin="150,240,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="Температура&#10;конденсатопровода" Margin="20,295,0,0" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="T_C_R_M" Margin="150,300,0,0" PreviewTextInput="PreviewTextInput" Height="20" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"/>                    
+                    <Label Content="Примечание" Margin="20,350,0,0" Height="30" Width="Auto" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="NoteM_R_Text" Margin="150,350,0,0" Width="250" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Button x:Name="CalcBtnM_R" Height="20" Width="120" Margin="20,380,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Рассчитать участок" Click="CalcBtnM_R_Click"  Command="{Binding CalcCommandRM}"/>
+                </Grid>
+                <RadioButton Margin="20,0" Grid.Row="0" x:Name="RBtn_CM" GroupName="ROOM" Content="Тоннель/проходной канал" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                <Grid Grid.Row="1" Visibility="{Binding ElementName=RBtn_CM, Path=IsChecked, Converter={StaticResource BoolToVisibilityConverter}}">
+                    <Label Margin="20,60" Width="Auto" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Температура пара"/>
+                    <TextBox x:Name="TSM_C_Text" Text="{Binding Path=T_S}" PreviewTextInput="PreviewTextInput" Margin="150,60,0,0" Width="50" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Label Margin="20,120" Width="Auto" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Длина участка"/>
+                    <TextBox x:Name="LM_C_Text" Text="{Binding Path=L}" PreviewTextInput="PreviewTextInput" Margin="150,120,0,0" Width="50" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Label Margin="20,180,0,0" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Наружный диаметр&#10;паропровода"/>
+                    <ComboBox x:Name="D_M_T_C_List" SelectedIndex="0" SelectedItem="{Binding Path=D_U}" DisplayMemberPath="D_CM" ItemsSource="{Binding}" SelectedValuePath="ID_U" Margin="150,180,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Margin="20,240,0,0" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Диаметр конденсато-&#10;провода"/>
+                    <ComboBox x:Name="D_M_W_C_List" SelectedIndex="0" SelectedItem="{Binding Path=D_U}" DisplayMemberPath="D_CM" ItemsSource="{Binding}" SelectedValuePath="ID_U" Margin="150,240,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="Температура&#10;конденсатопровода" Margin="20,295,0,0" Width="Auto" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="T_C_C_M" Margin="150,300,0,0" PreviewTextInput="PreviewTextInput" Height="20" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"/>                    
+                    <Label Content="Примечание" Margin="20,350,0,0" Height="30" Width="Auto" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="NoteM_C_Text" Margin="150,350,0,0" Width="250" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Button x:Name="CalcBtnM_C" Height="20" Width="120" Margin="20,380,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Рассчитать участок" Click="CalcBtnM_C_Click"  Command="{Binding CalcCommandCM}"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Window>

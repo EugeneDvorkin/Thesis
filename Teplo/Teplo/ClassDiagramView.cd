@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Teplo.AllCalcLogic.BasLogicClass">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAgACAAAAAAEgAAAAYBAAAAAAAAJCAAASAAAAEQA=</HashCode>
+      <FileName>AllCalcLogic\BasLogicClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Teplo.AllCalcLogic.ExcelLogic">
+    <Position X="10" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEIAAAAAAIABAAAEAAAAAAAAAAAAEAAAACBCAAAA=</HashCode>
+      <FileName>AllCalcLogic\ExcelLogic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Teplo.AllCalcLogic.ResClass">
+    <Position X="8" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACQCIAAQAAAAAAAAgAAAAAUAAAA=</HashCode>
+      <FileName>AllCalcLogic\ResClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Teplo.AllCalcLogic.StartparamsCM">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAIAAAAAAAAAAAAAAAAAVAAAA=</HashCode>
+      <FileName>AllCalcLogic\StartParams\StartparamsCM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Teplo.AllCalcLogic.StartParamsCU">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAIAAAAAAAAAAAAAAAAAVAAAA=</HashCode>
+      <FileName>AllCalcLogic\StartParams\StartParamsCU.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Teplo.AllCalcLogic.StartParamsM">
+    <Position X="11.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAACAAIAAAAAAAAAAAAAAAAAUAAAA=</HashCode>
+      <FileName>AllCalcLogic\StartParams\StartParamsM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Teplo.AllCalcLogic.StartParamsRM">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAIAAAAAAAAAAAAAAAAAVAAAA=</HashCode>
+      <FileName>AllCalcLogic\StartParams\StartParamsRM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Teplo.AllCalcLogic.StartParamsRU">
+    <Position X="6.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAIAAAAAAAAAAAAAAAAAVAAAA=</HashCode>
+      <FileName>AllCalcLogic\StartParams\StartParamsRU.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Teplo.AllCalcLogic.StartParamsU">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAACAAIAAAAAAAAAAAAAAAAAUAAAA=</HashCode>
+      <FileName>AllCalcLogic\StartParams\StartParamsU.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Teplo.BoolToVisibilityConverter" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\BoolToVisibilityConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Teplo.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAACMgQAAAAAAAYAAgAAAAAAAAAAAAAAAEQABgAI=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Teplo.Calculation.CalculationParams">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAACQCAAAAAAKAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Calculation\CalculationParams.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Teplo.Calculation.SteamCalculation">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAgAAAAAQAAAQAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Calculation\SteamCalculation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Teplo.Command.RelayCommand" BaseTypeListCollapsed="true">
+    <Position X="4.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAEAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
