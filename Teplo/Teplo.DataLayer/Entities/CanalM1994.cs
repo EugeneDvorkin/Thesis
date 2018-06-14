@@ -8,7 +8,7 @@ namespace Teplo.DataLayer.Entities
         [Key, Required, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID_CM { get; set; }
         [Required]
-        public int D_CM { get; set; }
+        public int D_CM { get; set; } 
         [Required]
         public double Q35_10_CM { get; set; }
         [Required]
