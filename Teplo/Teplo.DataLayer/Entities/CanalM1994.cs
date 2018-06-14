@@ -8,11 +8,7 @@ namespace Teplo.DataLayer.Entities
         [Key, Required, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID_CM { get; set; }
         [Required]
-<<<<<<< HEAD
         public int D_CM { get; set; } 
-=======
-        public int D_CM { get; set; }
->>>>>>> ccc5de9... Add repo
         [Required]
         public double Q35_10_CM { get; set; }
         [Required]
