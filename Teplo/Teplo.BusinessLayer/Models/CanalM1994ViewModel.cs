@@ -18,5 +18,7 @@ namespace Teplo.BusinessLayer.Models
         public double Q285_260_CM { get; set; }       
         public double Q335_310_CM { get; set; }        
         public double Q385_360_CM { get; set; }
+
+        //test
     }
 }
